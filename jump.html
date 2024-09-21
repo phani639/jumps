@@ -1,0 +1,172 @@
+<html lang="en"></html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script>
+        let existingUser = prompt("Enter your card")
+        let existingCvv = prompt("Enter your cvv")
+        let existingExpiry = prompt("Enter your expiry date [2000-2030]")
+        // console.log(existingUser)
+        // console.log(existingCvv)
+    
+   
+        
+        function verifyCard()
+         {
+            var Card = document.getElementById("txtCard").value;
+            if (Card == existingUser) 
+            {
+                document.getElementById("txtCvv").disabled = false;
+            }
+        }
+
+        function verifyCvv() {
+            var Cvv = document.getElementById("txtCvv").value;
+            if (Cvv === existingCvv) {
+                document.getElementById("lstExpiry").disabled = false;
+            }
+        }
+
+        function verifyExpiry() {
+            var Card = document.getElementById("txtCard").value;
+            var Expiry = document.getElementById("lstExpiry").value;
+            if (existingUser === Card) 
+            {
+                if (existingExpiry === Expiry) 
+                {
+                    document.querySelector("button").disabled = false;
+                }
+            }
+
+        }
+
+        function handlePay() {
+            document.querySelector(".box").style.display = "block"
+            document.getElementById("card").innerHTML =  document.getElementById("txtCard").value;
+            document.getElementById("cvv").innerHTML = document.getElementById("txtCvv").value;
+            document.getElementById("expiry").innerHTML = document.getElementById("lstExpiry").value;
+        }
+
+
+    </script>
+
+    <style>
+        body {
+           
+            border-radius: 15px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+        }
+
+        .form {
+            border: 2px solid;
+            height: 300px;
+            width: 300px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        dt {
+            margin-top: 15px;
+            font-weight: bold;
+            font-family: 'Times New Roman';
+            font-size: 21px;
+        }
+
+        .box {
+            display: none;
+            border: 2px solid;
+            padding: 10px;
+            height: 300px;
+            width: 300px;
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.192);
+        }
+        h3 {
+            font-weight: bold;
+            font-family: 'Times New Roman';
+            border: 1px solid aquamarine;
+            background-color: aliceblue;
+            color: blueviolet;
+            width: 150px;
+            /* text-align: center; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            margin: auto;
+            border-radius: 15px;
+        }
+        .btn-outline-primary {
+            color: black;
+            font-weight: bold;
+        }
+        p {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <dl>
+            <dt>Card</dt>
+            <dd><input type="text" id="txtCard" onblur="verifyCard()"></dd>
+            <dt>Cvv</dt>
+            <dd><input type="text" id="txtCvv" onblur="verifyCvv()" disabled></dd>
+            <dt>Expiry</dt>
+            <dd>
+                <select id="lstExpiry" onchange="verifyExpiry()" disabled>
+                    <option>Select Expiry Date</option>
+                    <option>2000</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+                </select>
+            </dd>
+        </dl>
+        <button disabled class="btn btn-outline-primary" onclick="handlePay()">Pay</button>
+    </div>
+    <div class="box">
+        <h3>DETAILS</h3>
+        <p id="card"></p>
+        <p id="cvv"></p>
+        <p id="expiry"></p>
+    </div>
+</body>
+
+</html>
